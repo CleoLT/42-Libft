@@ -76,9 +76,15 @@ int	main(void)
 	int *p1 = ft_calloc(0, sizeof(int));
 	printf("*p1 = ft_calloc(4, sizeof(int))\np1[0] == %d, p1[1] == %d, p1[2] == %d, p1[3] == %d\n", p1[0], p1[1], p1[2], p1[3]); 
 	int *p2 = calloc(0, sizeof(int));
-	printf("*p2 = calloc(4, sizeof(int))\np2[0] == %d, p2[1] == %d, p2[2] == %d, p2[3] == %d\n", p2[0], p2[1], p2[2], p2[3]); 
+	printf("*p2 = calloc(4, sizeof(int))\np2[0] == %d, p2[1] == %d, p2[2] == %d, p2[3] == %d\n\n", p2[0], p2[1], p2[2], p2[3]); 
 	free(p1);
 	free(p2);
 
+	printf("ft_strdup\n%s\n", ft_strdup(cmp1));
+	printf("strdup\n%s\n\n", strdup(cmp1));
+
+	printf("ft_substr(hola buenos dias, 2, 6)\n%s\n\n", ft_substr("hola buenos dias", 2, 6));
+	printf("ft_substr('', 2, 6)\n%s\n\n", ft_substr("hola", 10, 12));
+	
 	return (0);
 }
