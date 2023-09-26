@@ -11,9 +11,9 @@ int	main(void)
 	printf("isdigit\n0->%d\n", ft_isdigit('0'));
 	printf("R->%d\n\n", ft_isdigit('R'));
 	char b[] = "hola buenos dias";
-	printf("memset\nv, 2 -> %s\n", ft_memset(b, 'v', 2));
+	printf("memset\nv, 2 -> %s\n", (char *)ft_memset(b, 'v', 2));
 	char c[] = "hola buenos dias";
-	printf("memset de string.h\nv, 2 -> %s\n\n", memset(c, 'v', 2));
+	printf("memset de string.h\nv, 2 -> %s\n\n", (char *)memset(c, 'v', 2));
 	char test[] = "holi";
 	ft_bzero(test, 3);
 	printf("bzero\n3 -> %s\n", test);
@@ -22,25 +22,25 @@ int	main(void)
 	printf("bzero de string.h\n3 -> %s\n\n", test1);
 	char ft_mc[] = "hola buenos dias";
 	char src[] = "bonjour";
-	printf("ft_memcpy\n4 -> %s\n", ft_memcpy(ft_mc, src, 4));
+	printf("ft_memcpy\n4 -> %s\n", (char *)ft_memcpy(ft_mc, src, 4));
 	char mc[] = "hola buenos dias";
-	printf("memcpy\n4 -> %s\n\n", memcpy(mc, src, 4));
+	printf("memcpy\n4 -> %s\n\n", (char *)memcpy(mc, src, 4));
 
 	char ft_mmc[] = "hola buenos dias";
 	char ft_mmc1[] = "hola buenos dias";
-	printf("ft_memmove\ndst + 4, dst, 10 -> %s\n", ft_memmove(ft_mmc + 4, ft_mmc, 10));
-	printf("dst, dst + 3, 10 -> %s\n", ft_memmove(ft_mmc1, ft_mmc1 + 3, 10));
+	printf("ft_memmove\ndst + 4, dst, 10 -> %s\n", (char *)ft_memmove(ft_mmc + 4, ft_mmc, 10));
+	printf("dst, dst + 3, 10 -> %s\n", (char *)ft_memmove(ft_mmc1, ft_mmc1 + 3, 10));
 	char mmc[] = "hola buenos dias";
-	printf("memmove\ndst + 4, dst, 10 -> %s\n", memmove(mmc + 4, mmc, 10));
+	printf("memmove\ndst + 4, dst, 10 -> %s\n", (char *)memmove(mmc + 4, mmc, 10));
 	char mmc1[] = "hola buenos dias";
-	printf("dst, dst + 3, 10 -> %s\n\n", memmove(mmc1, mmc1 + 3, 10));
+	printf("dst, dst + 3, 10 -> %s\n\n", (char *)memmove(mmc1, mmc1 + 3, 10));
 	char ft_dcpy[] = "hola buenos dias";
 	char ft_scpy[] = "bonjour";
 	printf("ft_strlcpy\nreturn -> %lu\n", ft_strlcpy(ft_dcpy, ft_scpy, 7));
 	printf("dest -> %s\n", ft_dcpy);
 	char dcpy[] = "hola buenos dias";
-	char scpy[] = "bonjour";
-	printf("strlcpy\nreturn -> %lu\n", strlcpy(dcpy, scpy, 7));
+	//char scpy[] = "bonjour";
+	//printf("strlcpy\nreturn -> %lu\n", strlcpy(dcpy, scpy, 7));
 	printf("dest -> %s\n\n", dcpy);
 	char ft_chr[] = "hola buenos dias";
 	printf("ft_strchr\na -> %s\n", ft_strchr(ft_chr, 'a'));
@@ -71,7 +71,7 @@ int	main(void)
 	printf("memcmp\n%d\n\n", memcmp("hola\0hola", "hola\0i", 8));
 
 	printf("ft_strnstr\n%s\n", ft_strnstr("hola buenos dias", "buen", 9));
-	printf("strnstr\n%s\n\n", strnstr("hola buenos dias", "buen", 9));
+	//printf("strnstr\n%s\n\n", strnstr("hola buenos dias", "buen", 9));
 
 	int *p1 = ft_calloc(0, sizeof(int));
 	printf("*p1 = ft_calloc(4, sizeof(int))\np1[0] == %d, p1[1] == %d, p1[2] == %d, p1[3] == %d\n", p1[0], p1[1], p1[2], p1[3]); 
@@ -80,11 +80,34 @@ int	main(void)
 	free(p1);
 	free(p2);
 
-	printf("ft_strdup\n%s\n", ft_strdup(cmp1));
-	printf("strdup\n%s\n\n", strdup(cmp1));
+	char *p3 = ft_strdup(cmp1);
+	char *p4 = strdup(cmp1);
+	printf("ft_strdup\n%s\n", p3);
+	printf("strdup\n%s\n\n", p4);
+	free(p3);
+        free(p4);
 
-	printf("ft_substr(hola buenos dias, 2, 6)\n%s\n\n", ft_substr("hola buenos dias", 2, 6));
-	printf("ft_substr('', 2, 6)\n%s\n\n", ft_substr("hola", 10, 12));
-	
+	char *p5 = ft_substr("hola buenos dias", 2, 6);
+	char *p6 = ft_substr("hola", 10, 12);
+	printf("ft_substr(hola buenos dias, 2, 6)\n%s\n\n", p5);
+	printf("ft_substr('', 2, 6)\n%s\n\n", p6);
+        free(p5);
+        free(p6);
+
+	char *p7 = ft_strjoin("hola buenos dias", " bonjour");
+        char *p8 = ft_strjoin("hola", "");
+        printf("ft_strjoin(hola buenos dias, bonjour)\n%s\n\n", p7);
+        printf("ft_strjoin(hola, '')\n%s\n\n", p8);
+        free(p7);
+	free(p8);
+
+	char *p9 = ft_strtrim("hola buenos dias", "dias");
+       // char *p10 = ft_strjoin("hola", "");
+        printf("ft_strtrim(hola buenos dias, dias)\n%s\n\n", p9);
+       //printf("ft_strjoin(hola, '')\n%s\n\n", p10);
+        free(p9);
+       // free(p10);
+
+
 	return (0);
 }
