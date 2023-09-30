@@ -2,7 +2,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "libft.h"
+
+char my_func(unsigned int i, char c)
+{
+	return (c + i);
+}
+
+void  my_func2(unsigned int i, char* c)
+{
+	if (i % 2 == 0)
+		write(1, c, 1);
+}
 
 int	main(void)
 {
@@ -124,18 +136,42 @@ int	main(void)
 	free(p14);
 	free(p15);
 
-	char *p16 = ft_itoa(42);
-	printf("%s\n", p16);
+	char *p16 = ft_itoa(423);
+	printf("ft_itoa\t%s\t", p16);
 	free(p16);
 	char *p17 = ft_itoa(-123456);
-	printf("%s\n", p17);
+	printf("%s\t\t", p17);
 	free(p17);
 	char *p18 = ft_itoa(0);
-	printf("%s\n", p18);
+	printf("%s\t", p18);
 	free(p18);
 	char *p19 = ft_itoa(-2147483648);
-	printf("%s\n", p19);
+	printf("%s\n\n", p19);
 	free(p19);
 
+	char *mapi = "hnj^";
+	char *p20 = ft_strmapi(mapi, my_func);
+	printf("ft_strmapi('hnj^', f(return c+1)) -> %s\n\n", p20);
+	free(p20);
+
+	printf("ft_striteri('h/o/l/a', myfunc2) ->\n");
+	char *iteri = "h/o/l/a";
+    ft_striteri(iteri, my_func2);
+	printf("\n\n");
+
+   	ft_putchar_fd('a', 1);
+	ft_putchar_fd('\n', 1);
+    ft_putchar_fd('a', 0);
+	ft_putchar_fd('\n', 1);
+	ft_putchar_fd('a', 2);
+	ft_putchar_fd('\n', 1);
+	ft_putchar_fd('\n', 1);
+
+	ft_putstr_fd("hola", 1);
+	ft_putchar_fd('\n', 1);
+
+	ft_putendl_fd("hola", 2);
+
+	ft_putnbr_fd(678, 1);
 	return (0);
 }
