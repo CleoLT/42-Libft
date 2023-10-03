@@ -6,7 +6,7 @@
 #    By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 16:02:29 by ale-tron          #+#    #+#              #
-#    Updated: 2023/09/30 15:49:12 by ale-tron         ###   ########.fr        #
+#    Updated: 2023/10/03 11:45:38 by ale-tron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,11 @@ CFLAGS	= -Wall -Wextra -Werror
 
 NAME	= libft.a
 
+INCLUDE = libft.h
+
 all:	$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) $(INCLUDE)
 	ar rcs $(NAME) $(OBJS)
 
 clean:
