@@ -79,11 +79,17 @@ int	main(void)
 	printf("5 -> %d\n", strncmp(cmp1, cmp2, 5));
 	printf("15 -> %d\n\n", strncmp(cmp1, cmp2, 15));
 
+	printf("ft_memchr\n%s\n", ft_memchr("hola\0holiholi", 'i', 12));
+	printf("memchr\n%s\n", memchr("hola\0holiholi", 'i', 12));
+
 	printf("ft_memcmp\n%d\n", ft_memcmp("hola\0hola", "hola\0i", 8));
 	printf("memcmp\n%d\n\n", memcmp("hola\0hola", "hola\0i", 8));
 
 	printf("ft_strnstr\n%s\n", ft_strnstr("hola buenos dias", "buen", 9));
 	printf("strnstr\n%s\n\n", strnstr("hola buenos dias", "buen", 9));
+
+	printf("%d\n", atoi("-2147483648"));
+	printf("%d\n", ft_atoi("-2147483648"));
 
 	int *p1 = ft_calloc(0, sizeof(int));
 	printf("*p1 = ft_calloc(4, sizeof(int))\np1[0] == %d, p1[1] == %d, p1[2] == %d, p1[3] == %d\n", p1[0], p1[1], p1[2], p1[3]); 
@@ -173,5 +179,11 @@ int	main(void)
 	ft_putendl_fd("hola", 2);
 
 	ft_putnbr_fd(678, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putnbr_fd(-2147483647, 1);
+	ft_putchar_fd('\n', 1);
+	ft_putnbr_fd(0, 1);
+
+
 	return (0);
 }

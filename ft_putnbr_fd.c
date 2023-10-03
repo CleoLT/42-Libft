@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:46:46 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/09/30 15:55:05 by ale-tron         ###   ########.fr       */
+/*   Updated: 2023/10/02 09:32:15 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -14,11 +14,28 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*num;
-	int		len;
+	char		num[10];
+	int			index;
+	long int	nb;
 
-	num = ft_itoa(n);
-	len = ft_strlen(num);
-	write(fd, num, len);
-	free(num);
+	nb = n;
+	index = 0;
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb = -nb;
+	}
+	if (nb == 0)
+		write(fd, "0", 1);
+	while (nb > 0)
+	{
+		num[index] = nb % 10 + '0';
+		nb /= 10;
+		index++;
+	}
+	while (index > 0)
+	{
+		index--;
+		write(fd, &num[index], 1);
+	}
 }
